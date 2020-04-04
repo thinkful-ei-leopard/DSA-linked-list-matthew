@@ -168,6 +168,31 @@ function findLast(list) {
   return tempNode;
 }
 
+/* +++++++++++++++++++++++++++++++++++++++++++++++
+Mystery program
+Analyze the following function (without running it in an IDE) to determine 
+what problem it is trying to solve. What is the runtime of this algorithm?
+function WhatDoesThisProgramDo(lst){
+    let current = lst.head;
+    while(current !== null){
+        let newNode = current;
+        while (newNode.next !== null) {
+            if (newNode.next.value === current.value) {
+                newNode.next = newNode.next.next;
+            }
+            else{
+                newNode = newNode.next;
+            }
+        }
+        current = current.next;
+    }
+}
+//Answer: This program removes duplicates from a linked list. It will remove the 2nd and 
+//later occurances of the linked list - will not presenve the order of the list
+*/
+
+
+
 function main() {
   let sll = new LinkedList();
   sll.insertLast('Apollo');
