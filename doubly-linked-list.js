@@ -106,6 +106,24 @@ function size(lst){
   return counter;
 }
 
+function reverseDll(list) {
+  let currNode = list.head;
+  let tempNode = null;
+    
+  while (currNode !== null) {
+    //swapping nodes
+    tempNode = currNode.next;
+    currNode.next = currNode.prev;
+    currNode.prev = tempNode;
+
+    currNode = tempNode;
+  }
+  tempNode = list.head;
+  list.head = list.tail;
+  list.tail = tempNode;
+
+}
+
 function main() {
   let dll = new DLinkedList();
   dll.insertFirst('Aquaria');
@@ -125,4 +143,7 @@ function main() {
   //dll.remove('Picon');
   //console.log(size(dll));
   //console.log(dll);
+
+  reverseDll(dll);
+  console.log(dll);
 }
