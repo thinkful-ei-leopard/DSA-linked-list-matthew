@@ -122,6 +122,52 @@ class LinkedList {
   }
 }
 
+function display(list) {
+  let currNode = this.head;
+  while(currNode !== null) {
+    console.log(currNode.value);
+    currNode = currNode.next;
+  }
+}
+
+function size(list) {
+  let counter = 0;
+  let currNode = list.head;
+  if(!currNode) {
+    return counter;
+  } else {
+    counter++;
+  }
+  while(currNode.next !== null) {
+    counter++;
+    currNode = currNode.next;
+  }
+  return counter;
+}
+
+function isEmpty(list) {
+  return !list.head;
+}
+
+function findPrevious(list, item) {
+  let currNode = list.head;
+  while((currNode !== null) && (currNode.next.value !== item)) {
+    currNode = currNode.next;
+  }
+  return currNode;
+}
+
+function findLast(list) {
+  if(list.head === null) {
+    return 'list is empty';
+  }
+  let tempNode = list.head;
+  while(tempNode.next !== null) {
+    tempNode = tempNode.next;
+  }
+  return tempNode;
+}
+
 function main() {
   let sll = new LinkedList();
   sll.insertLast('Apollo');
