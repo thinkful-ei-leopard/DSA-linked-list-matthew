@@ -225,6 +225,16 @@ function reverse(list) {
   return list;
 }
 
+function thirdFromEnd(list) {
+  let thirdEnd = list.head;
+  let end = list.head.next.next.next;
+  while(end !== null) {
+    thirdEnd = thirdEnd.next;
+    end = end.next;
+  }
+  return thirdEnd.value;
+}
+
 function main() {
   let sll = new LinkedList();
   sll.insertLast('Apollo');
