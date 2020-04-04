@@ -235,6 +235,18 @@ function thirdFromEnd(list) {
   return thirdEnd.value;
 }
 
+function middOfList(list) {
+  let end = list.head;
+  let middle = list.head;
+
+  while(end !== null && end.next !== null) {
+    end = end.next.next;
+    middle = middle.next;
+  }
+
+  return middle.value;
+}
+
 function main() {
   let sll = new LinkedList();
   sll.insertLast('Apollo');
