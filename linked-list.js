@@ -191,7 +191,39 @@ function WhatDoesThisProgramDo(lst){
 //later occurances of the linked list - will not presenve the order of the list
 */
 
+// recursive
+function reverseList(node) {
+  if(node === null) {
+    return null;
+  }
 
+  if(node.next === null) {
+    return node;
+  }
+
+  const secondElem = node.next;
+  node.next = null;
+  const reverseRest = reverseList(secondElem);
+  secondElem.next = node;
+  return reverseRest;
+}
+
+// iterative
+function reverse(list) {
+  let reversedPart = null;
+  let current = list.head;
+
+  while(current !== null) {
+    let savedNode = current.next;
+    current.next = reversedPart;
+    reversedPart = current;
+    current = savedNode;
+  }
+
+  list.head = reversedPart;
+
+  return list;
+}
 
 function main() {
   let sll = new LinkedList();
