@@ -247,10 +247,38 @@ function middOfList(list) {
   return middle.value;
 }
 
+function hasCycle(list) {
+  let flag = Math.random();
+  let current = list.head;
+  while(current !== null) {
+    if(current.value === flag) {
+      return true;
+    }
+    current.value = flag;
+    current = current.next;
+  }
+  return false;
+}
+
+function findCycle(list) {
+  let fast = list.head;
+  let slow = list.head;
+  while(slow !== null && fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if(slow === fast) {
+      console.log('Found CYCLE!');
+      return;
+    }
+  }
+  console.log('NO Cycle Found');
+}
+
 function main() {
   let sll = new LinkedList();
   sll.insertLast('Apollo');
   sll.insertLast('Boomer');
+  display(sll);
   sll.insertLast('Helo');
   sll.insertLast('Husker');
   sll.insertLast('Starbuck');
@@ -268,4 +296,32 @@ function main() {
   sll.insertAt(3, 'Kay');
 
   sll.remove('Tauhida');
+
+  display(sll);
+
+  //console.log(size(sll));
+
+  //console.log(isEmpty(sll));
+
+  let prevNode = findPrevious(sll, 'Kat');
+  //console.log(prevNode.value);
+
+  let lastNode = findLast(sll);
+  //console.log(lastNode.value);
+
+  //console.log(reverseList(sll.head));
+  //display(reverse(sll));
+
+  //console.log(thirdFromEnd(sll));
+
+  //console.log(middleOfList(sll));
+
+  findCycle(sll);
+  console.log(hasCycle(sll));
+
+  sll.head.next.next = sll.head;
+  findCycle(sll);
+  console.log(hasCycle(sll));
 }
+
+main();
